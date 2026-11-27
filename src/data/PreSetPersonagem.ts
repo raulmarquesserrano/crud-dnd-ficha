@@ -2,22 +2,41 @@ import { Personagem } from '../types/personagem';
 
 export const PreSetPersonagem: Personagem[] = [
     {
-    id: '';
-    nomep: '';
-    nomej: '';
-    raca: '';
-    classe: '';
-    nivel: '';
-    deslocamento: '';
-    bp: '';
-    ca: '';
-    hptotal: '';
-    hpatual: '';
-    constituicao: '';
-    forca: '';
-    destreza: '';
-    inteligencia: '';
-    sabedoria: '';
-    carisma: '';
+    id: '1',
+    nomep: 'Jonas',
+    nomej: 'Helio',
+    raca: 'Humano',
+    classe: 'Dragon Emperor',
+    nivel: 1,
+    deslocamento: 9,
+    bp: 2,
+    ca: 11,
+    hptotal: 12,
+    hpatual: 12,
+    constituicao: 14,
+    forca: 16,
+    destreza: 13,
+    inteligencia: 10,
+    sabedoria: 8,
+    carisma: 15,
+    },
+    {
+    id: '2',
+    nomep: 'Manuel',
+    nomej: 'Carlos',
+    raca: 'Turtle',
+    classe: 'Mago',
+    nivel: 2,
+    deslocamento: 7.5,
+    bp: 2,
+    ca: 18,
+    hptotal: 8,
+    hpatual: 8,
+    constituicao: 10,
+    forca: 13,
+    destreza: 11,
+    inteligencia: 19,
+    sabedoria: 16,
+    carisma: 13,
     },
 ];
