@@ -35,5 +35,33 @@ export const styles = StyleSheet.create({
   },
   atributos: {
     left: -15,
-  }
+  },
+  botaoCriarPersonagem: {
+    marginBottom: 75,
+  },
+  inputG: {
+    color: '#a1e99e',
+    fontSize: 32,
+    width: 150,
+  },
+  inputM: {
+    color: '#a1e99e',
+    fontSize: 22,
+    width: 150,
+  },
+  inputP: {
+    color: '#a1e99e',
+    fontSize: 12,
+    width: 150,
+  },
+  alinhar: {
+    flexDirection: 'row',
+    alignContent: 'center',
+    gap: 20,
+  },
+  voltar2: {
+    alignItems: 'center',
+    gap: 5,
+    marginLeft: 60,
+  },
 })

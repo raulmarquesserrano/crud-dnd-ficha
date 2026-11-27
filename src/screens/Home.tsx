@@ -4,21 +4,51 @@ import { Personagem } from '../types/personagem';
 import { PreSetPersonagem } from '../data/PreSetPersonagem';
 import { styles } from '../styles/Styles';
 import Detalhes from './Detalhes';
+import Formulario from './Formulario';
 
 export default function Home() {
 
     const [personagens, setPersonagens] = useState(PreSetPersonagem);
+
+    const [exibirForm, setExibirForm] = useState(false);
+    const [selecionado, setSelecionado] = useState<Personagem | null>(null);
+    const [editando, setEditando] = useState<Personagem | null>(null);
+
     const funcExcluir = (id: string) => {
     const listaPosExclusao = personagens.filter((item) => item.id !== id);
     setPersonagens(listaPosExclusao);
     }
-    const [selecionado, setSelecionado] = useState < Personagem | null > (null);
+
+    //e
+    const handleSalvar = (personagemSalvo: Personagem) => {
+        const jaExiste = personagens.some((p) => p.id === personagemSalvo.id);
+        if (jaExiste) {
+            setPersonagens(personagens.map((p) => (p.id === personagemSalvo.id ? personagemSalvo : p)));
+        } else {
+            setPersonagens([...personagens, personagemSalvo]);
+        }
+        setExibirForm(false);
+        setEditando(null);
+    };
 
     if (selecionado) {
         return (
             <Detalhes
             personagem={selecionado}
             onVoltar={() => setSelecionado(null)}
+            />
+        );
+    }
+
+    if (exibirForm) {
+        return (
+            <Formulario
+                personagemInicial={editando}
+                onSalvar={handleSalvar}
+                onVoltar={() => {
+                    setExibirForm(false);
+                    setEditando(null);
+            }}
             />
         );
     }
@@ -41,7 +71,7 @@ export default function Home() {
 
             <View style={styles.cardDireita}>
 
-            <TouchableOpacity onPress={() => alert("editar")}>
+            <TouchableOpacity onPress={() => {setEditando(item); setExibirForm(true); }}>
                 <Text style={styles.textoM}>Editar</Text>
             </TouchableOpacity>
 
@@ -52,6 +82,15 @@ export default function Home() {
             </View>
             )}
         />
+
+        <View style={styles.botaoCriarPersonagem}>
+
+            <TouchableOpacity onPress={() => {setEditando(null); setExibirForm(true); }}>
+                <Text style={styles.textoM}>Registrar Personagem +</Text>
+            </TouchableOpacity>
+
+        </View>
+
         </View>
     )
 }
