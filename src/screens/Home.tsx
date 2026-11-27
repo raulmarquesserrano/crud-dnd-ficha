@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList} from 'react-native';
 import { Personagem } from '../types/personagem';
 import { PreSetPersonagem } from '../data/PreSetPersonagem';
 import { styles } from '../styles/Styles';
+import Detalhes from './Detalhes';
 
 export default function Home() {
 
@@ -10,6 +11,16 @@ export default function Home() {
     const funcExcluir = (id: string) => {
     const listaPosExclusao = personagens.filter((item) => item.id !== id);
     setPersonagens(listaPosExclusao);
+    }
+    const [selecionado, setSelecionado] = useState < Personagem | null > (null);
+
+    if (selecionado) {
+        return (
+            <Detalhes
+            personagem={selecionado}
+            onVoltar={() => setSelecionado(null)}
+            />
+        );
     }
 
     return (
@@ -23,7 +34,7 @@ export default function Home() {
             renderItem={({ item }) => (
             <View style={styles.cardEsquerda}>
             
-            <TouchableOpacity onPress={() => alert("abrir aqui ficha")}>
+            <TouchableOpacity onPress={() => setSelecionado(item)}>
             <Text style={styles.textoG}>{item.nomep}</Text>
             <Text style={styles.textoP}>{item.classe} {item.nivel}, {item.raca}</Text>
             </TouchableOpacity>

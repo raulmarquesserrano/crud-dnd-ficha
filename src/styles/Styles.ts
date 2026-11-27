@@ -33,4 +33,7 @@ export const styles = StyleSheet.create({
     color: '#EAEAEA',
     fontSize: 12,
   },
+  atributos: {
+    left: -15,
+  }
 })
